@@ -1,6 +1,6 @@
 {
   "framework": null,
   "installCommand": "echo skip-install",
-  "buildCommand": "mkdir -p .vercel_out && cp index.html .vercel_out/index.html",
+  "buildCommand": "mkdir -p .vercel_out && cp index.html .vercel_out/index.html && (cp og-image.jpg .vercel_out/og-image.jpg 2>/dev/null || true)",
   "outputDirectory": ".vercel_out"
 }
