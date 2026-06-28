@@ -1,13 +1,133 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>rsd-demo-page</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>RSD Demo — The 3 Leaks, and how to win them back | Real Space Digital</title>
+<meta name="description" content="Short demos for each Real Space Digital always-on system. See what's quietly costing you, then win it back."/>
+<meta property="og:title" content="See the demos — 3 leaks, and how to win them back"/>
+<meta property="og:image" content="https://i.ytimg.com/vi/kydN5OnSwqI/maxresdefault.jpg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#08090c;--cream:#ECE7DD;--muted:rgba(236,231,221,.66);--muted2:rgba(236,231,221,.46);--gold:#C9A961;--amber:#F2A93B;--amberhi:#F8CE7E;--green:#5FD08A;--violet:#B79CFF;--hair:rgba(201,169,97,.18);--hairs:rgba(255,255,255,.08);--grad:linear-gradient(135deg,#F8CE7E,#F2A93B 42%,#C9821F);--rxl:24px;--rmd:14px;--accent:var(--amber)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;color:var(--cream);font-family:Outfit,system-ui,sans-serif;line-height:1.55;background:radial-gradient(120% 80% at 88% -6%,rgba(242,150,40,.16),transparent 46%),linear-gradient(180deg,#0c0e13,var(--ink) 60%,#060709);background-attachment:fixed}
+a{color:inherit;text-decoration:none}.serif{font-family:"Cormorant Garamond",Georgia,serif}
+.wrap{width:min(1040px,calc(100% - 30px));margin:0 auto}
+.bar{position:sticky;top:0;z-index:30;backdrop-filter:blur(10px);background:rgba(8,9,12,.72);border-bottom:1px solid var(--hairs)}
+.bar .r{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
+.brand{display:inline-flex;align-items:center;gap:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:.72rem}
+.brand::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--grad);box-shadow:0 0 12px rgba(242,169,59,.8)}
+.cta{display:flex;gap:9px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;border:none;cursor:pointer;border-radius:999px;padding:11px 18px;font-weight:700;font-size:.9rem;transition:.15s}
+.amber{background:var(--grad);color:#231603}.amber:hover{transform:translateY(-1px)}
+.ghost{background:rgba(255,255,255,.06);color:var(--cream);border:1px solid var(--hair)}
+.nav{display:flex;gap:7px;overflow-x:auto;padding:9px 0 2px;scrollbar-width:none}.nav::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;font-size:.76rem;color:var(--muted);border:1px solid var(--hairs);background:rgba(255,255,255,.035);padding:6px 12px;border-radius:999px;white-space:nowrap}
+.chip:hover{color:var(--cream);border-color:var(--hair)}
+h1{font-family:"Cormorant Garamond",serif;font-weight:700;line-height:1.03;font-size:clamp(2.2rem,5.2vw,3.8rem);margin:.2rem 0 .5rem}
+.eyebrow{color:var(--amber);font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:.7rem;margin:26px 0 10px;display:flex;align-items:center;gap:8px}
+.eyebrow .d{width:7px;height:7px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(242,169,59,.18)}
+.lede{color:var(--muted);font-size:1.08rem;max-width:60ch;margin:0 0 16px}
+.vid{position:relative;width:100%;aspect-ratio:16/9;border:1px solid var(--hair);border-radius:var(--rxl);overflow:hidden;cursor:pointer;background:#0d0f14;margin:6px 0}
+.poster{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;padding:20px;background:radial-gradient(120% 90% at 50% 30%,color-mix(in srgb,var(--accent) 26%,transparent),transparent 60%),linear-gradient(150deg,#14110b,#0b0c10 55%,#060708)}
+.ptag{font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:800;border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);padding:5px 11px;border-radius:999px}
+.plabel{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:clamp(1.3rem,3vw,2rem)}
+.play{width:70px;height:70px;border:0;border-radius:50%;background:var(--grad);box-shadow:0 14px 40px rgba(242,150,40,.45);display:grid;place-items:center;cursor:pointer}
+.play svg{width:26px;height:26px;margin-left:3px;fill:#1c1303}.psoon{font-size:.72rem;color:var(--muted2)}
+.vid:focus-visible{outline:none;box-shadow:0 0 0 4px rgba(242,169,59,.38)}
+.frame{position:absolute;inset:0;width:100%;height:100%;border:0}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin:16px 0}
+@media(max-width:700px){.pillars{grid-template-columns:1fr}}
+.pil{border:1px solid var(--hairs);background:rgba(255,255,255,.035);border-radius:var(--rmd);padding:13px 15px;border-top:3px solid var(--pc)}
+.pil .n{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--pc);font-weight:700}.pil .t{font-size:.9rem;margin-top:3px}
+.sec{scroll-margin-top:120px;margin:20px 0}
+.card{border:1px solid var(--hairs);border-top:3px solid var(--accent);border-radius:var(--rxl);background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.015));padding:clamp(20px,4vw,40px)}
+.kick{color:var(--accent);font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:.68rem}
+.card h2{font-family:"Cormorant Garamond",serif;font-size:clamp(1.7rem,3.6vw,2.6rem);margin:.2rem 0}
+.low{color:var(--accent);font-weight:600;font-size:.94rem;margin-bottom:6px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.box{border:1px solid var(--hairs);background:rgba(255,255,255,.035);border-radius:var(--rmd);padding:14px;color:var(--muted);font-size:.92rem}
+.box .l{display:block;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2);font-weight:700;margin-bottom:5px}
+.box.sys{border-left:3px solid var(--accent)}
+.emph{border-left:3px solid var(--accent);background:color-mix(in srgb,var(--accent) 9%,rgba(255,255,255,.035));border-radius:12px;padding:15px 17px;margin:16px 0;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(1.1rem,2.2vw,1.4rem)}
+.how{margin:14px 0}.how .l{display:block;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted2);font-weight:700;margin-bottom:8px}
+.how ol{counter-reset:s;list-style:none;margin:0;padding:0}
+.how li{position:relative;padding:8px 0 8px 36px;border-top:1px solid var(--hairs);counter-increment:s;font-size:.94rem}
+.how li:first-child{border-top:none}
+.how li::before{content:counter(s);position:absolute;left:0;top:7px;width:25px;height:25px;border-radius:50%;background:color-mix(in srgb,var(--accent) 18%,rgba(255,255,255,.05));color:var(--accent);font-weight:800;font-size:.8rem;display:grid;place-items:center;border:1px solid color-mix(in srgb,var(--accent) 40%,transparent)}
+.close{font-family:"Cormorant Garamond",serif;font-size:1.2rem;margin:16px 0 4px}
+.row{display:flex;gap:11px;flex-wrap:wrap;margin-top:12px}
+.demo{background:linear-gradient(135deg,#9DB9FF,#6E8BFF 52%,#3E59CC);color:#0a1024;font-weight:800}
+.aA{--accent:var(--amber)}.aG{--accent:var(--green)}.aV{--accent:var(--violet)}.aD{--accent:var(--gold)}
+.sec.tg .card{box-shadow:0 0 0 2px var(--accent) inset}
+.foot{margin:26px 0 50px;text-align:center;color:var(--muted2);font-size:.78rem;line-height:1.7}.foot a{color:var(--amberhi)}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+<div class="r"><a class="brand" href="https://realspacedigital.net">Real Space Digital</a>
+<div class="cta"><a class="btn ghost" data-cta="pricing">Run your numbers</a><a class="btn amber" data-cta="audit">Book a free audit</a></div></div>
+<nav class="nav" id="nav" aria-label="Jump to a demo"></nav>
+</div></header>
+<main class="wrap">
+<section class="sec aA" id="top">
+<div class="eyebrow"><span class="d"></span>Watch this first</div>
+<h1>3 leaks are quietly killing your business.</h1>
+<p class="lede">See what's quietly costing you — then see how to win it back. A short demo for each always-on system. Explore on your own; no call needed.</p>
+<div class="vid" data-yt="" data-label="The Three Pillars" role="button" tabindex="0" aria-label="Play demo"><div class="poster"><div class="ptag">Demo video</div><div class="plabel serif">The Three Pillars</div><button class="play" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button><div class="psoon">Placeholder — swap in the final cut</div></div></div>
+<div class="pillars">
+<div class="pil" style="--pc:var(--green)"><div class="n">Recover revenue</div><div class="t">Leads &amp; jobs that quietly book elsewhere.</div></div>
+<div class="pil" style="--pc:var(--amber)"><div class="n">Win bookings</div><div class="t">After-hours inquiries answered and booked.</div></div>
+<div class="pil" style="--pc:var(--violet)"><div class="n">Reduce hassle</div><div class="t">Manual work and missed demand, removed.</div></div>
+</div>
+<div class="emph">Know that these are not three separate problems. They are one gap: your business is not fully on when your customers are.</div>
+<div class="row"><a class="btn amber" data-cta="pricing">Run your numbers →</a><a class="btn ghost" data-cta="audit">Book a free audit</a></div>
+</section>
+<div id="secs"></div>
+<section class="sec aA"><div class="card" style="text-align:center">
+<div class="kick">Your move</div>
+<h2>See what your gap is costing — then close it.</h2>
+<p class="lede" style="margin:6px auto 14px">Explore on your own — no call needed. When you're ready, run your numbers or have us audit your business for free.</p>
+<div class="row" style="justify-content:center"><a class="btn amber" data-cta="pricing">Run your numbers →</a><a class="btn ghost" data-cta="audit">Book a free audit</a></div>
+</div></section>
+</main>
+<p class="foot">Digitizing Reality, Elevating Sales™ · © 2026 Real Space Digital · <a href="mailto:info@realspacedigital.net">info@realspacedigital.net</a> · (434) 215-4276</p>
+<script>
+var RSD={PRICING:"https://calculate.rsddirect.com",AUDIT:"https://calendly.com/realspacedigital/business-audit-discovery"};
+var PH="kydN5OnSwqI";
+var V={top:PH};
+var S=[
+["tour-to-booking",1,"aA","Win bookings","Tour to Booking","A tour that books while you sleep.","Visitors who tour, picture themselves there, and then find nowhere to book.","Tour2Booking™ — a virtual tour that books around the clock.","Know that a tour that cannot book is just a brochure that moves.",["Build a true-to-life virtual tour of the space people already want to see.","Inside the tour, visitors find what they need and qualify themselves.","They book the appointment right there, while the interest is still warm."]],
+["always-on-authority",2,"aA","Win bookings · Recover revenue","Always-On Authority","The page that never closes.","Real questions asked after hours that never get an answer — so the lead leaves.","AlwaysOn Authority — a page that answers, qualifies, and captures every inquiry on its own.","Know that the inquiry you never answer is the customer you never meet.",["Build a page that answers the real questions your buyers ask, in your voice.","It qualifies as it answers, so the right people raise their hand.","It captures every inquiry and hands it to you ready."]],
+["social-avatar",3,"aG","Recover revenue · Presence","Social Avatar Presence","Stay visible without living on camera.","The story goes untold; there is never time to post, and the feed goes quiet.","Social Avatar Presence — a branded avatar that tells your story without you posting every day.","Know that a brand that goes quiet is a brand that gets forgotten.",["Build your branded avatar — a presence that looks and sounds like you.","It tells your story on a steady cadence, so you stay in front of your market.","You approve, and it posts — without you living on camera."]],
+["reputation-flywheel",4,"aG","Recover revenue · Proof","Reputation Flywheel","Turn earned trust into proof that closes.","Your happiest clients say the perfect thing — and it walks out the door unrecorded.","Reputation Flywheel — capture proof, turn it into video, and compound trust.","Know that your best marketing already happened — it just never got recorded.",["Capture the proof — the real words from the people you have already served.","Turn it into clean, branded video that carries weight.","Put that proof to work on the next buyer, so the trust compounds."]],
+["loss-revenue-leverage",5,"aG","Recover revenue","Loss Revenue","Find what is leaving, and stop it.","Revenue you never see leave — no alarm, no receipt, just a normal-looking week.","The Loss Revenue system — find the leak, close it, and measure what returns.","Know that you cannot fix the revenue you cannot see.",["Find where revenue is slipping — the slow replies, the after-hours gaps, the manual work.","Close those leaks with always-on systems built around your business.","Measure what returns, so the gain is real and not a guess."]],
+["always-on-operations",6,"aV","Reduce hassle","Always-On Operations","Give your team back their hours.","Manual workflows and missed demand wearing the team down before the real work starts.","AlwaysOn Operations — automate the intake, route the work, and free the team.","Know that every task a system could do is an hour your business pays for twice.",["Automate the intake — the forms, the routing, the first reply.","Send the right work to the right place, the moment it arrives.","Free your team to do the work only people can do."]],
+["product-photo",7,"aG","Recover revenue · Add-on","Product Photo Shoot","Make it look as good online as in hand.","Flat, careless product imagery that quietly costs the sale at the last tap.","The Product Photo Shoot — shoot it right, retouch to standard, deliver a conversion-ready set.","Know that people do not buy what they cannot picture themselves owning.",["Shoot your product the way it deserves — light, angle, and detail that read premium.","Retouch to a clean, consistent standard across the whole line.","Deliver a conversion-ready set, sized for every place you sell."]],
+["seasonal-shoots",8,"aG","Recover revenue · Add-on","Seasonal Shoots","A presence that always looks like right now.","Stale imagery that leaves the brand frozen in one season while buyers move on.","Seasonal Shoots — plan the season, capture ahead, refresh on a steady cadence.","Know that a brand frozen in one season looks like a business that stopped paying attention.",["Plan the year — the seasons, moments, and campaigns that matter.","Capture ahead of each one, so you are never scrambling.","Refresh your presence on a steady cadence, always current."]],
+["digital-twin",9,"aD","Recover revenue · Presence · Premium","True Digital Twin Clone","Be in more than one place at once.","The owner cannot be everywhere — expertise trapped in one stretched calendar.","The True Digital Twin — clone you, train the voice, and represent you around the clock. Comes with 6 featured True Avatar Videos.","Know that the thing that makes your business work is also the thing that limits it — you.",["Build a faithful clone — your face, your voice, your way of speaking.","Train it on what you know, so it represents you accurately.","Let it show up around the clock while you stay in the rooms only you can be in."]],
+["conversion-os",10,"aD","Flagship — all three pillars","Conversion OS","One always-on system across your whole business.","More than one leak at once — point fixes that still leak between the cracks.","AlwaysOn Conversion OS™ — combine the systems, run them as one, and compound the result.","Know that three leaks fixed separately still leak between the cracks.",["Combine the systems your business needs — tour, authority, presence, proof, operations — into one.","Run them as a single OS, handing off to each other without a seam.","Compound the result, so every part makes the others work harder."]]
+];
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function facade(id,label){return '<div class="vid" data-yt="'+(V[id]||'')+'" data-label="'+esc(label)+'" role="button" tabindex="0" aria-label="Play demo: '+esc(label)+'"><div class="poster"><div class="ptag">Demo video</div><div class="plabel serif">'+esc(label)+'</div><button class="play" tabindex="-1" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></button><div class="psoon">Placeholder — swap in the final cut</div></div></div>'}
+var nav='',secs='';
+S.forEach(function(s){var id=s[0],n=s[1],a=s[2],pill=s[3],t=s[4],low=s[5],leak=s[6],sys=s[7],emp=s[8],steps=s[9];
+V[id]=V[id]||PH;
+nav+='<a class="chip" href="#'+id+'">'+esc(t)+'</a>';
+var li=steps.map(function(x){return '<li>'+esc(x)+'</li>'}).join('');
+secs+='<section class="sec '+a+'" id="'+id+'"><div class="card"><div class="kick">Demo '+n+' of 10 · '+esc(pill)+'</div><h2>'+esc(t)+'</h2><div class="low">'+esc(low)+'</div>'+facade(id,t)+'<div class="grid"><div class="box"><span class="l">The leak it names</span>'+esc(leak)+'</div><div class="box sys"><span class="l">The system</span>'+esc(sys)+'</div></div><div class="emph">'+esc(emp)+'</div><div class="how"><span class="l">How it works</span><ol>'+li+'</ol></div><div class="close">Get your pricing, or book a free audit.</div><div class="row"><a class="btn amber" data-cta="pricing">Get your pricing →</a><a class="btn ghost" data-cta="audit">Book a free audit</a><a class="btn demo" data-demo>▶ See the demo</a></div></div></section>';
+});
+document.getElementById('nav').innerHTML=nav;
+document.getElementById('secs').innerHTML=secs;
+document.querySelectorAll('[data-cta]').forEach(function(a){a.href=a.dataset.cta=='audit'?RSD.AUDIT:RSD.PRICING;a.target='_blank';a.rel='noopener'});
+document.querySelectorAll('[data-demo]').forEach(function(a){a.style.cursor='pointer';a.addEventListener('click',function(){var sec=a.closest('.sec');var v=sec&&sec.querySelector('.vid');if(v)play(v)})});
+function play(el){if(el.dataset.p)return;var id=el.getAttribute('data-yt');if(!id)return;el.dataset.p='1';var f=document.createElement('iframe');f.className='frame';f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1&playsinline=1';f.title='RSD demo';f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';f.setAttribute('allowfullscreen','');el.innerHTML='';el.appendChild(f);el.style.cursor='default'}
+document.querySelectorAll('.vid').forEach(function(el){el.addEventListener('click',function(){play(el)});el.addEventListener('keydown',function(e){if(e.key=='Enter'||e.key==' '){e.preventDefault();play(el)}})});
+function focusUrl(){var id=(location.hash||'').replace('#','');var p=new URLSearchParams(location.search);if(!id&&p.get('focus'))id=p.get('focus');if(!id)return;var el=document.getElementById(id);if(!el)return;if(el.scrollIntoView){try{el.scrollIntoView({behavior:'smooth',block:'start'})}catch(e){}}if(el.classList.contains('sec')){el.classList.add('tg');setTimeout(function(){el.classList.remove('tg')},2400)}}
+window.addEventListener('hashchange',focusUrl);window.addEventListener('load',function(){setTimeout(focusUrl,60)});focusUrl();
+</script>
+</body>
 </html>
