@@ -1,8 +1,6 @@
-﻿{
-    "rewrites":  [
-                     {
-                         "destination":  "/index.html",
-                         "source":  "/(.*)"
-                     }
-                 ]
+{
+  "framework": null,
+  "installCommand": "echo skip-install",
+  "buildCommand": "mkdir -p .vercel_out && cp index.html .vercel_out/index.html",
+  "outputDirectory": ".vercel_out"
 }
